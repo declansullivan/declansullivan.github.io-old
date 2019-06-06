@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+    
+  <script>
+    $(function() {
+      $("#header").load("/partials/header.html");
+    });
+
+    function newImg(x) {
+      x.src = "/images/luke.jpg";
+    }
+
+    function oldImg(x) {
+      x.src = "/images/home.jpg";
+    }
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+
+  
+<body>
+
+<div id="header"></div>
+  
+  <div class="subimgborder">
+    
+    <img class="home" onmouseenter="newImg(this)" onmouseleave="oldImg(this)" src="/images/home.jpg"></img>
+
+    <p class="about">
+      Hi, I'm Declan, welcome to my website! I am currently studying Data Science as an undergraduate at 
+      the University of California, San Diego. I'm a big fan of science fiction and LEGO, as well as programming 
+      and cooking.
+      <br><br> 
+      I'm a Data Science Instructional Assistant at UCSD and a member of the executive board for
+      <a href="https://medium.com/ds3ucsd" target="_blank">DS3</a>, our Data Science Student Society. 
+      I am also a part of <a href="http://tc.ucsd.edu/" target="_blank">Triton Software Engineering</a> 
+      as a developer and Associated Students as a Judicial Board Member.
+    </p>
+  
+  </div>
+
+</body>
+
+</html>
