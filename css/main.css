@@ -157,11 +157,23 @@ body {
   font-weight: normal;
 }
 
-.list ul .course {
+.list ul .component {
   line-height: 100%;
 }
 
-.list ul .course .hide ul li {
+.list ul .component .hide ul li {
+  position: relative;
+  padding-top: 5px;
+  width: 95%;
+  left: 5%;
+  font-size: 80%;
+}
+
+.list ul {
+  line-height: 100%;
+}
+
+.list ul .hide ul li {
   position: relative;
   padding-top: 5px;
   width: 95%;
@@ -173,7 +185,7 @@ body {
   font-size: 100%;
 }
 
-.list ul .coursetitle {
+.list ul .title {
   font-size: 100%;
 }
 
