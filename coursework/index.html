@@ -9,7 +9,7 @@
         $(function() {
             $("#header").load("/partials/header.html");
         });
-        
+
         $(document).ready(function() {
             /* -- DATA SCIENCE COURSES -- */
             var dscCourses = {
@@ -89,8 +89,8 @@
             function buildCourse(title, name, desc) {
                 return "<div class=\"course\">" +
                             "<li>" +
-                                "<span class=\"hide\"> " + name + " </span>" +
-                                "<span class=\"coursetitle\"> " +  title + " </span>" +
+                                "<span class=\"hide\"> " + title + " </span>" +
+                                "<span class=\"coursetitle\"> " +  name + " </span>" +
                             "</li>" +
                             "<span class=\"hide\">" +
                                 "<ul>" +
