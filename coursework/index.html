@@ -7,10 +7,6 @@
 
     <script>
         $(document).ready(function() {
-            $(function() {
-                $("#header").load("/partials/header.html");
-            });
-            
             /* -- DATA SCIENCE COURSES -- */
             var dscCourses = {
                 link: "https://www.ucsd.edu/catalog/courses/DSC.html",
@@ -163,6 +159,9 @@
 
             document.getElementById("courses").innerHTML = htmlOut;
 
+            $(function() {
+                $("#header").load("/partials/header.html");
+            });
     });
     </script>
 
