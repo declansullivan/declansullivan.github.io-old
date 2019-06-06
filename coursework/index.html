@@ -6,159 +6,158 @@
     </script>
 
     <script>
+        /* -- DATA SCIENCE COURSES -- */
+        var dscCourses = {
+            link: "https://www.ucsd.edu/catalog/courses/DSC.html",
+            name: "Data Science Courses",
+            dsc10: {
+                title: "DSC 10:",
+                name: "Principles of Data Science",
+                desc: "This introductory course develops computational thinking and tools necessary to answer questions that arise from large-scale datasets. This course emphasizes an end-to-end approach to data science, introducing programming techniques in Python that cover data processing, modeling, and analysis."
+            },
+            dsc20: {
+                title: "DSC 20:",
+                name: "Programming and Basic Data Structures for Data Science",
+                desc: "Provides an understanding of the structures that underlie the programs, algorithms, and languages used in data science by expanding the repertoire of computational concepts introduced in DSC 10 and exposing students to techniques of abstraction. Course will be taught in Python and will cover topics including recursion, higher-order functions, function composition, object-oriented programming, interpreters, classes, and simple data structures such as arrays, lists, and linked lists."
+            },
+            dsc30: {
+                title: "DSC 30:",
+                name: "Data Structures and Algorithms for Data Science",
+                desc: "Builds on topics covered in DSC 20 and provides practical experience in composing larger computational systems through several significant programming projects using Java. Students will study advanced programming techniques including encapsulation, abstract data types, interfaces, algorithms and complexity, and data structures such as stacks, queues, priority queues, heaps, linked lists, binary trees, binary search trees, and hash tables."
+            },
+            dsc80: {
+                title: "DSC 80:",
+                name: "The Practice and Application of Data Science",
+                desc: "The marriage of data, computation, and inferential thinking, or “data science,” is redefining how people and organizations solve challenging problems and understand the world. This course bridges lower- and upper-division data science courses as well as methods courses in other fields. Students master the data science life-cycle and learn many of the fundamental principles and techniques of data science spanning algorithms, statistics, machine learning, visualization, and data systems."
+            }
+        }
+
+        /* -- COMPUTER SCIENCE COURSES -- */
+        var cseCourses = {
+            link: "https://www.ucsd.edu/catalog/courses/CSE.html",
+            name: "Computer Science Courses",
+            cse11: {
+                title: "CSE 11:",
+                name: "Introduction to Computer Science and Object-Oriented Programming: Java",
+                desc: "An accelerated introduction to computer science and programming using the Java language. Basic UNIX. Modularity and abstraction. Documentation, testing and verification techniques. Basic object-oriented programming, including inheritance and dynamic binding. Exception handling. Event-driven programming.",
+            },
+            cse12: {
+                title: "CSE 12:",
+                name: "Basic Data Structures and Object-Oriented Design",
+                desc: "Use and implementation of basic data structures including linked lists, stacks, and queues. Use of advanced structures such as binary trees and hash tables. Object-oriented design including interfaces, polymorphism, encapsulation, abstract data types, pre-/post-conditions. Recursion. Uses Java and Java Collections.",
+            },
+            cse15: {
+                title: "CSE 15L:",
+                name: "Software Tools and Techniques Laboratory",
+                desc: "Hands-on exploration of software development tools and techniques. Investigation of the scientific process as applied to software development and debugging. Emphasis is on weekly hands-on laboratory experiences, development of laboratory notebooking techniques as applied to software design.",
+            },
+            cse20: {
+                title: "CSE 20:",
+                name: "Discrete Mathematics",
+                desc: "Basic discrete mathematical structures: sets, relations, functions, sequences, equivalence relations, partial orders, and number systems. Methods of reasoning and proofs: prepositional logic, predicate logic, induction, recursion, and pigeonhole principle. Infinite sets and diagonalization. Basic counting techniques; permutation and combinations. Applications will be given to digital logic design, elementary number theory, design of programs, and proofs of program correctness.",
+            },
+            cse21: {
+                title: "CSE 21:",
+                name: "Mathematics for Algorithms and Systems",
+                desc: "This course will provide an introduction to the discrete mathematical tools needed to analyze algorithms and systems. Enumerative combinatorics: basic counting principles, inclusion-exclusion, and generating functions. Matrix notation. Applied discrete probability. Finite automata."
+            }
+        }
+
+        /* -- MATH COURSES -- */
+        var mathCourses = {
+            link: "https://www.ucsd.edu/catalog/courses/MATH.html",
+            name: "Mathematics Courses",
+            math18: {
+                title: "MATH 18:",
+                name: "Linear Algebra",
+                desc: "Matrix algebra, Gaussian elimination, determinants. Linear and affine subspaces, bases of Euclidean spaces. Eigenvalues and eigenvectors, quadratic forms, orthogonal matrices, diagonalization of symmetric matrices. Applications. Computing symbolic and graphical solutions using Matlab."
+            },
+            math20c: {
+                title: "MATH 20C:",
+                name: "Calculus and Analytic Geometry for Science and Engineering",
+                desc: "Vector geometry, vector functions and their derivatives. Partial differentiation. Maxima and minima. Double integration."
+            },
+            math183: {
+                title: "MATH 183:",
+                name: "Statistical Methods",
+                desc: "Introduction to probability. Discrete and continuous random variables–binomial, Poisson and Gaussian distributions. Central limit theorem. Data analysis and inferential statistics: graphical techniques, confidence intervals, hypothesis tests, curve fitting."
+            }
+        }
+
+        /* -- ELECTRICAL ENGINEERING COURSES -- */
+        var eceCourses = {
+            link: "https://www.ucsd.edu/catalog/courses/ECE.html",
+            name: "Electrical Engineering Courses",
+            ece15: {
+                title: "ECE 15:",
+                name: "Engineering Computation",
+                desc: "Students learn the C programming language with an emphasis on high-performance numerical computation. The commonality across programming languages of control structures, data structures, and I/O is also covered."
+            }
+        }
+
+        /* Build HTML for entire course list, ds, cs, etc. */
+        function buildHTML(courseInfo) {
+            var out = [];
+            for (var key in courseInfo) {
+                if (key !== 'link' && key !== 'name') {
+                    // Build course html if a course.
+                    out.push(buildCourse(courseInfo[key]['title'],
+                                        courseInfo[key]['name'],
+                                        courseInfo[key]['desc']));
+                } else {
+                    out.push(courseInfo[key]);
+                }
+            }
+            // Build html for entire list of courses.
+            return buildCourseList(out);
+        }
+
+        /* Build HTML for single course. */
+        function buildCourse(title, name, desc) {
+            return "<div class=\"course\">" +
+                        "<li>" +
+                            "<span class=\"hide\"> " + title + " </span>" +
+                            "<span class=\"coursetitle\"> " +  name + " </span>" +
+                        "</li>" +
+                        "<span class=\"hide\">" +
+                            "<ul>" +
+                                "<li> " + desc + " </li>" +
+                            "</ul>" +
+                        "</span>" +
+                    "</div>"
+        }
+
+        /* Build HTML for single group of courses. */
+        function buildCourseList(courseList) {
+            var generatedHTML = "";
+            for (var i = 2; i < courseList.length; i++) {
+                generatedHTML += courseList[i];
+                if (i !== courseList.length - 1)
+                    generatedHTML += "<div class=\"break\"><br></br></div>";
+            }
+
+            return "<div class=\"category\">" +
+                        "<a href=" + courseList[0] + " target=\"_blank\" rel=\"noopener noreferrer\">" +
+                            courseList[1] + "</a>" +
+                        "<div class=\"list\">" +
+                            "<hr></hr>" +
+                            "<ul>" + generatedHTML + "</ul>" +
+                            "<hr></hr>" + 
+                        "</div>" +
+                    "</div>"
+        }
+
+        courses = [dscCourses, cseCourses, mathCourses, eceCourses];
+
+        // Build html text to set page to.
+        var htmlOut = "";
+        for (var key in courses) {
+            htmlOut += buildHTML(courses[key]);
+            htmlOut += "<br></br>";
+        }
+
         $(document).ready(function() {
-            /* -- DATA SCIENCE COURSES -- */
-            var dscCourses = {
-                link: "https://www.ucsd.edu/catalog/courses/DSC.html",
-                name: "Data Science Courses",
-                dsc10: {
-                    title: "DSC 10:",
-                    name: "Principles of Data Science",
-                    desc: "This introductory course develops computational thinking and tools necessary to answer questions that arise from large-scale datasets. This course emphasizes an end-to-end approach to data science, introducing programming techniques in Python that cover data processing, modeling, and analysis."
-                },
-                dsc20: {
-                    title: "DSC 20:",
-                    name: "Programming and Basic Data Structures for Data Science",
-                    desc: "Provides an understanding of the structures that underlie the programs, algorithms, and languages used in data science by expanding the repertoire of computational concepts introduced in DSC 10 and exposing students to techniques of abstraction. Course will be taught in Python and will cover topics including recursion, higher-order functions, function composition, object-oriented programming, interpreters, classes, and simple data structures such as arrays, lists, and linked lists."
-                },
-                dsc30: {
-                    title: "DSC 30:",
-                    name: "Data Structures and Algorithms for Data Science",
-                    desc: "Builds on topics covered in DSC 20 and provides practical experience in composing larger computational systems through several significant programming projects using Java. Students will study advanced programming techniques including encapsulation, abstract data types, interfaces, algorithms and complexity, and data structures such as stacks, queues, priority queues, heaps, linked lists, binary trees, binary search trees, and hash tables."
-                },
-                dsc80: {
-                    title: "DSC 80:",
-                    name: "The Practice and Application of Data Science",
-                    desc: "The marriage of data, computation, and inferential thinking, or “data science,” is redefining how people and organizations solve challenging problems and understand the world. This course bridges lower- and upper-division data science courses as well as methods courses in other fields. Students master the data science life-cycle and learn many of the fundamental principles and techniques of data science spanning algorithms, statistics, machine learning, visualization, and data systems."
-                }
-            }
-
-            /* -- COMPUTER SCIENCE COURSES -- */
-            var cseCourses = {
-                link: "https://www.ucsd.edu/catalog/courses/CSE.html",
-                name: "Computer Science Courses",
-                cse11: {
-                    title: "CSE 11:",
-                    name: "Introduction to Computer Science and Object-Oriented Programming: Java",
-                    desc: "An accelerated introduction to computer science and programming using the Java language. Basic UNIX. Modularity and abstraction. Documentation, testing and verification techniques. Basic object-oriented programming, including inheritance and dynamic binding. Exception handling. Event-driven programming.",
-                },
-                cse12: {
-                    title: "CSE 12:",
-                    name: "Basic Data Structures and Object-Oriented Design",
-                    desc: "Use and implementation of basic data structures including linked lists, stacks, and queues. Use of advanced structures such as binary trees and hash tables. Object-oriented design including interfaces, polymorphism, encapsulation, abstract data types, pre-/post-conditions. Recursion. Uses Java and Java Collections.",
-                },
-                cse15: {
-                    title: "CSE 15L:",
-                    name: "Software Tools and Techniques Laboratory",
-                    desc: "Hands-on exploration of software development tools and techniques. Investigation of the scientific process as applied to software development and debugging. Emphasis is on weekly hands-on laboratory experiences, development of laboratory notebooking techniques as applied to software design.",
-                },
-                cse20: {
-                    title: "CSE 20:",
-                    name: "Discrete Mathematics",
-                    desc: "Basic discrete mathematical structures: sets, relations, functions, sequences, equivalence relations, partial orders, and number systems. Methods of reasoning and proofs: prepositional logic, predicate logic, induction, recursion, and pigeonhole principle. Infinite sets and diagonalization. Basic counting techniques; permutation and combinations. Applications will be given to digital logic design, elementary number theory, design of programs, and proofs of program correctness.",
-                },
-                cse21: {
-                    title: "CSE 21:",
-                    name: "Mathematics for Algorithms and Systems",
-                    desc: "This course will provide an introduction to the discrete mathematical tools needed to analyze algorithms and systems. Enumerative combinatorics: basic counting principles, inclusion-exclusion, and generating functions. Matrix notation. Applied discrete probability. Finite automata."
-                }
-            }
-
-            /* -- MATH COURSES -- */
-            var mathCourses = {
-                link: "https://www.ucsd.edu/catalog/courses/MATH.html",
-                name: "Mathematics Courses",
-                math18: {
-                    title: "MATH 18:",
-                    name: "Linear Algebra",
-                    desc: "Matrix algebra, Gaussian elimination, determinants. Linear and affine subspaces, bases of Euclidean spaces. Eigenvalues and eigenvectors, quadratic forms, orthogonal matrices, diagonalization of symmetric matrices. Applications. Computing symbolic and graphical solutions using Matlab."
-                },
-                math20c: {
-                    title: "MATH 20C:",
-                    name: "Calculus and Analytic Geometry for Science and Engineering",
-                    desc: "Vector geometry, vector functions and their derivatives. Partial differentiation. Maxima and minima. Double integration."
-                },
-                math183: {
-                    title: "MATH 183:",
-                    name: "Statistical Methods",
-                    desc: "Introduction to probability. Discrete and continuous random variables–binomial, Poisson and Gaussian distributions. Central limit theorem. Data analysis and inferential statistics: graphical techniques, confidence intervals, hypothesis tests, curve fitting."
-                }
-            }
-
-            /* -- ELECTRICAL ENGINEERING COURSES -- */
-            var eceCourses = {
-                link: "https://www.ucsd.edu/catalog/courses/ECE.html",
-                name: "Electrical Engineering Courses",
-                ece15: {
-                    title: "ECE 15:",
-                    name: "Engineering Computation",
-                    desc: "Students learn the C programming language with an emphasis on high-performance numerical computation. The commonality across programming languages of control structures, data structures, and I/O is also covered."
-                }
-            }
-
-            /* Build HTML for entire course list, ds, cs, etc. */
-            function buildHTML(courseInfo) {
-                var out = [];
-                for (var key in courseInfo) {
-                    if (key !== 'link' && key !== 'name') {
-                        // Build course html if a course.
-                        out.push(buildCourse(courseInfo[key]['title'],
-                                            courseInfo[key]['name'],
-                                            courseInfo[key]['desc']));
-                    } else {
-                        out.push(courseInfo[key]);
-                    }
-                }
-                // Build html for entire list of courses.
-                return buildCourseList(out);
-            }
-
-            /* Build HTML for single course. */
-            function buildCourse(title, name, desc) {
-                return "<div class=\"course\">" +
-                            "<li>" +
-                                "<span class=\"hide\"> " + title + " </span>" +
-                                "<span class=\"coursetitle\"> " +  name + " </span>" +
-                            "</li>" +
-                            "<span class=\"hide\">" +
-                                "<ul>" +
-                                    "<li> " + desc + " </li>" +
-                                "</ul>" +
-                            "</span>" +
-                        "</div>"
-            }
-
-            /* Build HTML for single group of courses. */
-            function buildCourseList(courseList) {
-                var generatedHTML = "";
-                for (var i = 2; i < courseList.length; i++) {
-                    generatedHTML += courseList[i];
-                    if (i !== courseList.length - 1)
-                        generatedHTML += "<div class=\"break\"><br></br></div>";
-                }
-
-                return "<div class=\"category\">" +
-                            "<a href=" + courseList[0] + " target=\"_blank\" rel=\"noopener noreferrer\">" +
-                                courseList[1] + "</a>" +
-                            "<div class=\"list\">" +
-                                "<hr></hr>" +
-                                "<ul>" + generatedHTML + "</ul>" +
-                                "<hr></hr>" + 
-                            "</div>" +
-                        "</div>"
-            }
-
-            courses = [dscCourses, cseCourses, mathCourses, eceCourses];
-
-            // Build html text to set page to.
-            var htmlOut = "";
-            for (var key in courses) {
-                htmlOut += buildHTML(courses[key]);
-                htmlOut += "<br></br>";
-            }
-
             document.getElementById("courses").innerHTML = htmlOut;
-
             $(function() {
                 $("#header").load("/partials/header.html");
             });
