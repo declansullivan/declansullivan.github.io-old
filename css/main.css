@@ -181,6 +181,14 @@ body {
   font-size: 80%;
 }
 
+.list ul .keep ul li {
+  position: relative;
+  padding-top: 5px;
+  width: 95%;
+  left: 5%;
+  font-size: 80%;
+}
+
 .list ul li .hide {
   font-size: 100%;
 }
@@ -190,7 +198,11 @@ body {
 }
 
 .list ul .break {
-  height: 35px;
+  height: 25px;
+}
+
+.list ul .smallbreak {
+  height: 15px;
 }
 
 /* About CSS */
@@ -345,7 +357,7 @@ body {
   }
 
   .list ul .break {
-    height: 0;
+    height: 10px;
   }
 
   .home {
