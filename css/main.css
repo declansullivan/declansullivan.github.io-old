@@ -4,12 +4,6 @@
   box-sizing: border-box;
 }
 
-.temporary {
-  margin-top: 15%;
-  font-size: 180%;
-  animation: App-logo-spin infinite 10s linear;
-}
-
 .svgs {
   width: 100%;
 }
