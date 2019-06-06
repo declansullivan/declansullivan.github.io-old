@@ -68,6 +68,38 @@
                 }
             }
 
+            /* -- MATH COURSES -- */
+            var mathCourses = {
+                link: "https://www.ucsd.edu/catalog/courses/MATH.html",
+                name: "Mathematics Courses",
+                math18: {
+                    title: "MATH 18:",
+                    name: "Linear Algebra",
+                    desc: "Matrix algebra, Gaussian elimination, determinants. Linear and affine subspaces, bases of Euclidean spaces. Eigenvalues and eigenvectors, quadratic forms, orthogonal matrices, diagonalization of symmetric matrices. Applications. Computing symbolic and graphical solutions using Matlab."
+                },
+                math20c: {
+                    title: "MATH 20C:",
+                    name: "Calculus and Analytic Geometry for Science and Engineering",
+                    desc: "Vector geometry, vector functions and their derivatives. Partial differentiation. Maxima and minima. Double integration."
+                },
+                math183: {
+                    title: "MATH 183:",
+                    name: "Statistical Methods",
+                    desc: "Introduction to probability. Discrete and continuous random variables–binomial, Poisson and Gaussian distributions. Central limit theorem. Data analysis and inferential statistics: graphical techniques, confidence intervals, hypothesis tests, curve fitting."
+                }
+            }
+
+            /* -- ELECTRICAL ENGINEERING COURSES -- */
+            var eceCourses = {
+                link: "https://www.ucsd.edu/catalog/courses/ECE.html",
+                name: "Electrical Engineering Courses",
+                ece15: {
+                    title: "ECE 15:",
+                    name: "Engineering Computation",
+                    desc: "Students learn the C programming language with an emphasis on high-performance numerical computation. The commonality across programming languages of control structures, data structures, and I/O is also covered."
+                }
+            }
+
             /* Build HTML for entire course list, ds, cs, etc. */
             function buildHTML(courseInfo) {
                 var out = [];
@@ -120,7 +152,7 @@
                         "</div>"
             }
 
-            courses = [dscCourses, cseCourses];
+            courses = [dscCourses, cseCourses, mathCourses, eceCourses];
 
             // Build html text to set page to.
             var htmlOut = "";
