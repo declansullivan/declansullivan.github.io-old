@@ -221,7 +221,7 @@ body {
   position: relative;
   margin: 0 auto;
   display: inline-block;
-  width: 40%;
+  width: 30%;
   margin: 2%;
   height: 250px;
   overflow: hidden;
@@ -407,6 +407,10 @@ body {
   .about {
     width: 100%;
     padding-top: 20px;
+  }
+
+  .projectholder {
+    top: 110px;
   }
 
   .project {
