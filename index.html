@@ -10,9 +10,17 @@
       $("#header").load("/partials/header.html");
     });
 
+    let swapped = false;
+
     function changeImg(x) {
-      if (x.src == "/images/luke.jpg") x.src = "/images/home.jpg";
-      else x.src = "/images/luke.jpg";
+      if (swapped) {
+        x.src = "/images/home.jpg";
+        swapped = false;
+      }
+      else {
+        x.src = "/images/luke.jpg";
+        swapped = true;
+      }
     }
   </script>
 
