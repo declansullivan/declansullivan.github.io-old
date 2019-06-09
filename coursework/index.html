@@ -138,12 +138,10 @@
 
             return "<div class=\"category\">" +
                         "<a href=" + courseList[0] + " target=\"_blank\" rel=\"noopener noreferrer\">" +
-                            courseList[1] + "</a>" +
+                            courseList[1] + "</a>" + "<hr></hr>" + 
                         "<div class=\"list\">" +
-                            "<hr></hr>" + "<div class=\"courselistholder\">" + 
-                            "<ul>" + generatedHTML + "</ul>" + "</div>" +
-                            "<hr></hr>" + 
-                        "</div>" +
+                            "<ul>" + generatedHTML + "</ul>" +
+                        "</div>" + "<hr></hr>" + 
                     "</div>"
         }
 
