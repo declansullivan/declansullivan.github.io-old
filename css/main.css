@@ -409,6 +409,11 @@ body {
     padding-top: 20px;
   }
 
+  .project {
+    width: 70%;
+    margin: 2%;
+  }
+
   .list ul {
     text-align: center;
   }
